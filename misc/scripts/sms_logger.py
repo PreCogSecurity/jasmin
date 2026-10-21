@@ -27,6 +27,7 @@ Requirement:
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 """
 
+import os
 import cPickle as pickle
 import binascii
 from datetime import datetime
@@ -195,8 +196,8 @@ if __name__ == "__main__":
     host = '127.0.0.1'
     port = 5672
     vhost = '/'
-    username = 'guest'
-    password = 'guest'
+    username = os.environ.get('JASMIN_REDIS_USERNAME', 'guest')
+    password = os.environ.get('JASMIN_REDIS_PASSWORD', 'guest')
     spec_file = '/etc/jasmin/resource/amqp0-9-1.xml'
 
     spec = txamqp.spec.load(spec_file)
