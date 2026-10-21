@@ -1,11 +1,25 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
-name = ""
+name = "jasmin"
 version = "0.1.0"
-requires-python = ">=3.8"
+description = "Jasmin is a very complete open source SMS Gateway with many enterprise-class features."
+readme = "README.rst"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Twisted",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
 
 [tool.ruff]
 line-length = 120
+select = ["E", "F", "I", "N", "B", "UP", "SIM"]

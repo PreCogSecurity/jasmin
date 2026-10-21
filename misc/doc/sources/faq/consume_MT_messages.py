@@ -1,4 +1,7 @@
 # Gist from https://gist.github.com/farirat/5701d71bf6e404d17cb4
+import os
+import os
+
 import cPickle as pickle
 from twisted.internet.defer import inlineCallbacks
 from twisted.internet import reactor
@@ -73,8 +76,8 @@ if __name__ == "__main__":
     host = '127.0.0.1'
     port = 5672
     vhost = '/'
-    username = 'guest'
-    password = 'guest'
+    username = os.environ.get('JASMIN_REDIS_USERNAME', 'guest')
+    password = os.environ.get('JASMIN_REDIS_PASSWORD', 'guest')
     spec_file = '/etc/jasmin/resource/amqp0-9-1.xml'
 
     spec = txamqp.spec.load(spec_file)

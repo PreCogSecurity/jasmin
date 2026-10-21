@@ -3,10 +3,11 @@
 Jasmin - Open source SMS gateway
 ################################
 
-|codacy| |landscape| |ci| |docker| |docs|
+|codacy| |landscape| |ci| |docker| |docker-composer| |env-example| |docs|
 
 Introduction
 ************
+
 Jasmin is a very complete open source SMS Gateway with many enterprise-class features such as:
 
 * SMPP Client / Server
@@ -26,19 +27,36 @@ Architecture
 ************
 
 .. figure:: https://github.com/jookies/jasmin/raw/master/misc/doc/sources/resources/architecture/hld.png
-   :alt: HLD Architecture
-   :align: Center
-   :figwidth: 100%
+    :alt: HLD Architecture
+    :align: Center
+    :figwidth: 100%
 
 Jasmin core and its external connectors (used for AMQP, Redis, SMPP, HTTP, Telnet ...) are written in Python
 and are mainly based on `Twisted matrix <https://twistedmatrix.com/>`_, an event-driven networking engine.
 
 Getting started
 ***************
-Refer to `Installation steps <http://docs.jasminsms.com/en/latest/installation/index.html>`_ to get Jasmin gateway up and running quickly with a simple SMS sending scenario.
+
+Docker users can start the full stack with:
+
+  $ docker compose up -d
+
+This will start RabbitMQ, Redis, and MySQL services alongside the Jasmin application.
+
+For non-Docker setups, refer to the Installation steps online to get the Jasmin gateway up and running quickly with a simple SMS sending scenario.
+
+Configuration
+***************
+
+Copy `.env.example` to `.env` and adjust the values for your environment:
+
+  $ cp .env.example .env
+
+The `.env` file is used by Docker Compose for service configuration.
 
 Documentation
-*************
+**************
+
 The documentation is at: http://docs.jasminsms.com
 
 If you still need to build it locally::
@@ -59,11 +77,12 @@ Links
 * `Travis CI <https://travis-ci.org/jookies/jasmin>`_
 
 License
-*******
+********
+
 Jasmin is released under the terms of the [Apache License Version 2]. See **`LICENSE`** file for details.
 
 Credits
-*******
+********
 
 * SMPP PDU parsing based on smpp.pdu: https://github.com/mozes/smpp.pdu
 * SMPP 3.4 Client based on smpp.twisted: https://github.com/mozes/smpp.twisted
@@ -88,6 +107,16 @@ Credits
     :alt: Docker image contents
     :scale: 100%
     :target: https://microbadger.com/#/images/jookies/jasmin
+
+.. |docker-composer| image:: https://img.shields.io/badge/docker-compose-ready-blue.svg
+    :alt: docker-compose ready
+    :scale: 100%
+    :target: docker-compose.yml
+
+.. |env-example| image:: https://img.shields.io/badge/env%20example-ready-green.svg
+    :alt: .env.example ready
+    :scale: 100%
+    :target: .env.example
 
 .. |docs| image:: https://readthedocs.org/projects/jasmin/badge/?version=latest
     :alt: Documentation status
